@@ -1,0 +1,20 @@
+pcb_clamp_detector/
+├── config/settings.py        ← all tuneable numbers here
+├── calibration/calibrator.py ← interactive click-to-calibrate tool
+├── detection/gap_detector.py ← GapDetector class + CLI runner
+└── utils/image_utils.py      ← shared helpers
+
+
+
+pip install opencv-python numpy
+
+# Step 1: Calibrate (F = freeze frame, click gap zones, S = save)
+python calibration/calibrator.py --profile board_A --camera 0
+
+# Step 2: Detect on live camera
+python detection/gap_detector.py --profile board_A --camera 0
+
+# Or test on a still image
+python detection/gap_detector.py --profile board_A --image test.jpg
+
+
